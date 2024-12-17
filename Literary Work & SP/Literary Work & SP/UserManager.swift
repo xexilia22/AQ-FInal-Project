@@ -18,7 +18,7 @@ class UserManager: ObservableObject {
     
     init() {
         self.currentUser = UserDefaults.standard.string(forKey: "currentUser")
-        self.isLoggedIn = true
+        self.isLoggedIn = false
     }
     
     func register(username: String, password: String) -> Bool {

@@ -10,14 +10,25 @@ import Foundation
 import SwiftUI
 
 struct Testing: PreviewProvider {
+    @StateObject private var userManager = UserManager()
+
     static var previews: some View {
-        LogInView()
+        RootView()
             .environmentObject(UserManager())
-            .onAppear() {
-                let posts = [Post(author: "ALice", title: "SwiftUI", content: "this is Alice's Peom", likes: 10, isliked: false, comments: [])]
-                StorageManager.savePosts(posts)
-            }
-        
+//        if userManager.isLoggedIn {
+//            CommunityView()
+////                    .environmentObject(userManager)
+////                    .onAppear {
+////                        userManager.loadFromDefaults()
+////                    }
+//        } else {
+//            LogInView()
+//                .environmentObject(userManager)
+//                .onAppear {
+//                    userManager.loadFromDefaults()
+//                }
+//        }
+//        
     }
 }
 

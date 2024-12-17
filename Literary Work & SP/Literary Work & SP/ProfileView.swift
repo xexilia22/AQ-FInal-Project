@@ -34,46 +34,46 @@ struct ProfileView: View {
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 }
                 .padding()
-                
-                Divider()
-                
-                // Liked Post Section
-                VStack(alignment: .leading) {
-                    Text("Liked Posts")
-                        .font(.headline)
-                        .padding(.top)
-                    List($likedPosts) { $post in
-                        NavigationLink(destination: PostView(post: $post)) {
-                            VStack(alignment: .leading) {
-                                Text(post.title)
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                                    .padding(.bottom, 2)
-                                HStack {
-                                    Text("Author: \(post.author)")
-                                    font(.subheadline)
-                                        .foregroundColor(.gray)
-                                    Spacer()
-                                    Text(post.creationTime, style: .date)
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
-                                }
-                                
-                                Text(post.content)
-                                    .font(.body)
-                                    .padding(.vertical, 4)
-                                
-                            }
-                            
-                        }
-                        
-                        
-                    }.listStyle(.inset)
-                    
-                    
-                    Divider()
-                        .padding(.vertical)
+//                
+//                Divider()
+//                
+//                // Liked Post Section
+//                VStack(alignment: .leading) {
+//                    Text("Liked Posts")
+//                        .font(.headline)
+//                        .padding(.top)
+//                    List($likedPosts) { $post in
+//                        NavigationLink(destination: PostView(post: $post)) {
+//                            VStack(alignment: .leading) {
+//                                Text(post.title)
+//                                    .font(.title3)
+//                                    .fontWeight(.bold)
+//                                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+//                                    .padding(.bottom, 2)
+//                                HStack {
+//                                    Text("Author: \(post.author)")
+//                                    font(.subheadline)
+//                                        .foregroundColor(.gray)
+//                                    Spacer()
+//                                    Text(post.creationTime, style: .date)
+//                                        .font(.subheadline)
+//                                        .foregroundColor(.gray)
+//                                }
+//                                
+//                                Text(post.content)
+//                                    .font(.body)
+//                                    .padding(.vertical, 4)
+//                                
+//                            }
+//                            
+//                        }
+//                        
+//                        
+//                    }.listStyle(.inset)
+//                    
+//                    
+//                    Divider()
+//                        .padding(.vertical)
                     
                     VStack(alignment: .leading) {
                         Text("My Posts")
@@ -95,8 +95,6 @@ struct ProfileView: View {
                                 }
                                 
                             }
-                            
-                                                                    
                         }
                         .listStyle(.inset)
 
@@ -106,22 +104,17 @@ struct ProfileView: View {
                 .navigationTitle("Profile")
                 .onAppear {
                     myPosts = loadMyPosts()
-                    likedPosts = loadLikedPosts()
+//                    likedPosts = loadLikedPosts()
                 }
                 .padding()
                 
             }
             
-        }
+        
     }
 
     
-    func deletePost(post: Post) {
-        if let index = posts.firstIndex(where: { $0.id == post.id }) {
-            posts.remove(at: index)
-            StorageManager.savePosts(posts)
-        }
-    }
+
     
     func getLikedPostIDs() -> Set<UUID> {
         let key = "likedPostIDs_\(username)"

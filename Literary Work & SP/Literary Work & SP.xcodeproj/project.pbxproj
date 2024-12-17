@@ -15,7 +15,6 @@
 		D6650F132D0F04D4002AA367 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F122D0F04D4002AA367 /* LogInView.swift */; };
 		D6650F152D0F04E4002AA367 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F142D0F04E4002AA367 /* RegisterView.swift */; };
 		D6650F192D0F0503002AA367 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F182D0F0503002AA367 /* CommunityView.swift */; };
-		D6650F1B2D0F051F002AA367 /* HotTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F1A2D0F051F002AA367 /* HotTopicView.swift */; };
 		D6650F1D2D0F053F002AA367 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F1C2D0F053F002AA367 /* PostModel.swift */; };
 		D6650F1F2D0F054F002AA367 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F1E2D0F054F002AA367 /* CommentModel.swift */; };
 		D6650F212D0F0563002AA367 /* PostCreationVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F202D0F0563002AA367 /* PostCreationVIew.swift */; };
@@ -26,6 +25,8 @@
 		D6650F2D2D0FB650002AA367 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F2C2D0FB650002AA367 /* Testing.swift */; };
 		D6650F332D100B94002AA367 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F322D100B94002AA367 /* ProfileView.swift */; };
 		D6650F372D10803C002AA367 /* EditPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6650F362D10803C002AA367 /* EditPostView.swift */; };
+		D6F710D62D114A2D00E70014 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F710D52D114A2D00E70014 /* RootView.swift */; };
+		D6F710D82D1150B100E70014 /* RootPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F710D72D1150B100E70014 /* RootPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,6 @@
 		D6650F122D0F04D4002AA367 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		D6650F142D0F04E4002AA367 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		D6650F182D0F0503002AA367 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
-		D6650F1A2D0F051F002AA367 /* HotTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotTopicView.swift; sourceTree = "<group>"; };
 		D6650F1C2D0F053F002AA367 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		D6650F1E2D0F054F002AA367 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		D6650F202D0F0563002AA367 /* PostCreationVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationVIew.swift; sourceTree = "<group>"; };
@@ -68,6 +68,8 @@
 		D6650F2C2D0FB650002AA367 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		D6650F322D100B94002AA367 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D6650F362D10803C002AA367 /* EditPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostView.swift; sourceTree = "<group>"; };
+		D6F710D52D114A2D00E70014 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		D6F710D72D1150B100E70014 /* RootPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +127,6 @@
 				D6650F122D0F04D4002AA367 /* LogInView.swift */,
 				D6650F142D0F04E4002AA367 /* RegisterView.swift */,
 				D6650F182D0F0503002AA367 /* CommunityView.swift */,
-				D6650F1A2D0F051F002AA367 /* HotTopicView.swift */,
 				D6650F1C2D0F053F002AA367 /* PostModel.swift */,
 				D6650F1E2D0F054F002AA367 /* CommentModel.swift */,
 				D6650F202D0F0563002AA367 /* PostCreationVIew.swift */,
@@ -134,6 +135,8 @@
 				D6650F2C2D0FB650002AA367 /* Testing.swift */,
 				D6650F322D100B94002AA367 /* ProfileView.swift */,
 				D6650F362D10803C002AA367 /* EditPostView.swift */,
+				D6F710D52D114A2D00E70014 /* RootView.swift */,
+				D6F710D72D1150B100E70014 /* RootPreview.swift */,
 			);
 			path = "Literary Work & SP";
 			sourceTree = "<group>";
@@ -297,12 +300,13 @@
 				D6650F1D2D0F053F002AA367 /* PostModel.swift in Sources */,
 				D6650F152D0F04E4002AA367 /* RegisterView.swift in Sources */,
 				D6650F2B2D0F5149002AA367 /* StorageManager.swift in Sources */,
+				D6F710D62D114A2D00E70014 /* RootView.swift in Sources */,
 				D6650F192D0F0503002AA367 /* CommunityView.swift in Sources */,
 				D6650F212D0F0563002AA367 /* PostCreationVIew.swift in Sources */,
+				D6F710D82D1150B100E70014 /* RootPreview.swift in Sources */,
 				D6650F332D100B94002AA367 /* ProfileView.swift in Sources */,
 				D6650F372D10803C002AA367 /* EditPostView.swift in Sources */,
 				D6650F252D0F05A8002AA367 /* UserManager.swift in Sources */,
-				D6650F1B2D0F051F002AA367 /* HotTopicView.swift in Sources */,
 				D6650F2D2D0FB650002AA367 /* Testing.swift in Sources */,
 				D6650F1F2D0F054F002AA367 /* CommentModel.swift in Sources */,
 				D6650F272D0F06E0002AA367 /* Literary_LP.swift in Sources */,

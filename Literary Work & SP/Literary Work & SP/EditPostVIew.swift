@@ -33,9 +33,9 @@ struct EditPostView: View {
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(10)
 //                .padding(.bottom, 16)
-                .onChange(of: post.content) { _ in
-                    textHeight = max(100, CGFloat(post.content.split(whereSeparator: \.isNewline).count) * 30)
-                }
+//                .onChange(of: post.content) { _ in
+//                    textHeight = max(100, CGFloat(post.content.split(whereSeparator: \.isNewline).count) * 30)
+//                }
             
             Button("Save") {
                 post.content = updatedContent

@@ -75,6 +75,3 @@ func showError_print(error: Bool){
 }
 
 
-#Preview {
-    LogInView()
-}

@@ -4,18 +4,11 @@ import SwiftUI
 
 @main
 struct Literary_LP: App {
-    @StateObject private var userManager = UserManager()
+    @StateObject var userManager = UserManager()
     var body: some Scene {
         WindowGroup {
-            if userManager.isLoggedIn {
-                CommunityView()
-                    .environmentObject(userManager)
-                    .onAppear {
-                        userManager.loadFromDefaults()
-                    }
-            } else {
-                LogInView()
-            }
+            RootView()
+                .environmentObject(userManager)
         }
     }
 }
