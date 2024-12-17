@@ -14,6 +14,7 @@ struct PostCreationView: View {
     var onCreatePost: (Post) -> Void
 
     @State private var content: String = ""
+    @State private var title: String = ""
 
     init(onCreatePost: @escaping (Post) -> Void) {
         self.onCreatePost = onCreatePost
@@ -22,11 +23,29 @@ struct PostCreationView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextEditor(text: $content)
+                TextField("Enter title here", text: $title)
                     .padding()
-                    .cornerRadius(8)
-                    .frame(width: 325, height: 300)
-                    .border(Color.gray, width: 1)
+                    
+//                    .frame(width: 325, height: 50)
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(10)
+                    .padding()
+//                    .border(Color.black.opacity(0.2), width: 1)
+                Text("Enter content here")
+                    .font(.headline)
+                    .padding()
+                
+                TextEditor(text: $content)
+                    .padding(.horizontal, 4)
+                    .frame(minHeight: 50)
+                    .overlay(Rectangle()
+                        .frame(height: 1)
+                        .padding(.top, 5), alignment: .bottom)
+                    .foregroundColor(.primary)
+                    .font(.body)
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(10)
+                    .padding(.bottom, 16)
                 
                 Spacer()
 
@@ -34,18 +53,29 @@ struct PostCreationView: View {
                     Button("Cancel") {
                         dismiss()
                     }
-                    .foregroundColor(.red)
+                    .padding()
+                    .foregroundColor(.white)
+                    .frame(width: 150, height: 39)
+                    .background(.red)
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.red, lineWidth: 1))
 
                     Spacer()
 
                     Button("Post") {
                         guard let author = userManager.currentUser else { return }
-                        let newPost = Post(author: author, content: content, comments: [])
+                        let newPost = Post(author: author, title: title, content: content, comments: [])
                         onCreatePost(newPost)
-//                        savePostToJSON(newPost)
                         dismiss()
                     }
-                    .foregroundColor(.blue)
+                    .padding()
+                    .foregroundColor(.white)
+                    .frame(width: 150, height: 39)
+                    .background(.blue)
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.blue, lineWidth: 1))
                 }
                 .padding()
             }
@@ -55,10 +85,10 @@ struct PostCreationView: View {
     
     private func savePostToJSON(_ post: Post) {
         var posts = StorageManager.loadPosts()
-        print("posts: \(posts)")
         posts.append(post)
-        print("posts: \(posts)")
         StorageManager.savePosts(posts)
     }
 }
+
+
 

@@ -14,9 +14,11 @@ struct Testing: PreviewProvider {
         LogInView()
             .environmentObject(UserManager())
             .onAppear() {
-                let posts = [Post(author: "ALice", content: "this is Alice's Peom", likes: 10, isliked: false, comments: [])]
+                let posts = [Post(author: "ALice", title: "SwiftUI", content: "this is Alice's Peom", likes: 10, isliked: false, comments: [])]
                 StorageManager.savePosts(posts)
             }
         
     }
 }
+
+

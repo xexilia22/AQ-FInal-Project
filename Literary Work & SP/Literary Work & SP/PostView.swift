@@ -14,10 +14,17 @@ struct PostView: View {
     @State private var newComment: String = ""
     @State private var posts: [Post] = StorageManager.loadPosts()
     @FocusState private var isCommentFieldFocused: Bool
-    
+    @State private var likedPostIDs: Set<UUID> = Set()
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 9) {
+            //Post title
+            Text(post.title)
+                .font(.title3)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.leading)
+                .padding()
+            
             // Post header: Author and creation time
             HStack {
                 Text("Author: \(post.author)")
@@ -40,12 +47,11 @@ struct PostView: View {
             // Like and Comment buttons
             HStack {
                 Button(action: {
-                    post.likes += 1
-                    updatePostInJSON()
+                    toggleLike(for: post)
                 }) {
                     HStack {
-                        Image(systemName: post.likes > 0 ? "heart.fill" : "heart")
-                            .foregroundColor(post.likes > 0 ? .red : .gray)
+                        Image(systemName: isLiked(post: post) ? "heart.fill" : "heart")
+                            .foregroundColor(isLiked(post: post) ? .red : .gray)
                         Text("\(post.likes)")
                             .font(.caption)
                     }
@@ -106,7 +112,7 @@ struct PostView: View {
                         if let author = userManager.currentUser, !newComment.isEmpty {
                             let comment = Comment(author: author, content: newComment, creationTime: Date())
                             post.comments.append(comment)
-                            print("post after adding comment: \(post)")
+//                            print("post after adding comment: \(post)")
                             updatePostInJSON()
                             newComment = ""
                             isCommentFieldFocused = false
@@ -130,7 +136,6 @@ struct PostView: View {
         if let index = posts.firstIndex(where: {
             $0.id == post.id
         }) {
-            print("index: \(index)")
             posts[index] = post
             StorageManager.savePosts(posts)
         }
@@ -138,11 +143,58 @@ struct PostView: View {
     
     private func savePostToJSON(_ post: Post) {
         var posts = StorageManager.loadPosts()
-        print("posts: \(posts)")
         posts.append(post)
-        print("posts: \(posts)")
         StorageManager.savePosts(posts)
     }
+    
+    private func toggleLike(for post: Post) {
+        var likedPostIDs = getLikedPostIDs()
+    
+        if isLiked(post: post) {
+            self.post.likes -= 1
+            self.post.isliked = false
+            likedPostIDs.remove(post.id)
+        } else {
+            self.post.likes += 1
+            self.post.isliked = true
+            likedPostIDs.insert(post.id)
+            
+        }
+        
+        saveLikedPostIDs(postIDs: likedPostIDs)
+
+        updatePostInJSON()
+        
+        print("likedPostIDs: \(likedPostIDs)")
+    }
+    
+    private func getLikedPostIDs() -> Set<UUID> {
+        guard let loggedinUser = userManager.currentUser else {
+            return Set()
+        }
+        
+        if let likePostIDsArray = UserDefaults.standard.array(forKey: "likedPostIDs_\(loggedinUser)") as? [String] {
+            return Set(likePostIDsArray.compactMap {UUID(uuidString: $0) })
+        }
+        return Set()
+    }
+
+    private func saveLikedPostIDs(postIDs: Set<UUID>) {
+        guard let loggedinUser = userManager.currentUser else {
+            return
+        }
+        let likedPostIDsArray = postIDs.map {$0.uuidString}
+
+        UserDefaults.standard.set(likedPostIDsArray, forKey: "likedPostIDs_\(loggedinUser)")
+    }
+    
+    func isLiked(post: Post) -> Bool {
+        let likedPostIDs = getLikedPostIDs()
+
+        return likedPostIDs.contains(post.id)
+    }
+    
+
 }
 
 

@@ -31,6 +31,7 @@ struct LogInView: View {
 
             
             Button("log in") {
+                print(userManager.login(username: username, password: password))
                 if userManager.login(username: username, password: password){
                     showError = false
                     isShowingCommunity = true
